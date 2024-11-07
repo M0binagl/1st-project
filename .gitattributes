@@ -1,2 +1,52 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+from tkinter import *
+window=Tk()
+window.geometry('500x500')
+window.title('Enterance')
+
+frame=Frame(window,height=500,width=500,bg='grey',highlightthickness=0,cursor='hand2',relief='flat',borderwidth=15)
+frame.grid(row=0,column=0)
+
+u=StringVar()
+p=StringVar()
+username='yas'
+password='mob'
+
+def check():
+    u=entry1.get()
+    p=entry2.get()
+    if u==username and p==password:
+        print('Yes')
+    else:
+        print('No')
+        
+entry1=Entry(frame,bg='cadet blue',insertbackground='white',cursor='hand2',bd=10,text='Enter your email addres')
+entry2=Entry(frame,bg='cadet blue',insertbackground='white',cursor='hand2',bd=10,text='Enter your password')
+entry1.place(x=25,y=150,relwidth=0.6,relheight=0.1)
+entry2.place(x=25,y=200,relwidth=0.6,relheight=0.1)
+
+
+btn1=Button(frame,text='continue with phone number',activebackground='black',activeforeground='white',bd=5,bg='rosy brown',command=check)
+btn2=Button(frame,text='forgot password',activebackground='black',activeforeground='white',bd=5,bg='light steel blue')
+btn3=Button(frame,text='already have an account?',activebackground='black',activeforeground='white',bd=5,bg='medium purple')
+
+btn1.place(x=30,y=310,relwidth=0.6)
+btn2.place(x=30,y=350,relwidth=0.6)
+btn3.place(x=30,y=400,relwidth=0.6)
+label1=Label(frame,text='Sign in',font='Helvetica 20 bold',anchor='center',cursor='hand2',bg='grey',relief='raised')
+label1.place(x=190,y=60)
+
+        
+ch_bool=BooleanVar()
+ch_bool.set(True)
+def check_change():
+    chB=ch_bool.get()
+    if chB :
+        entry2.config(show='')
+    else:
+        entry2.config(show='*')
+ch1=Checkbutton(frame,text='show content?',var=ch_bool,command=check_change,bg='grey',activebackground='grey')
+
+ch1.place(x=25,y=260,relwidth=0.2,relheight=0.1,)
+
+
+window.mainloop()
